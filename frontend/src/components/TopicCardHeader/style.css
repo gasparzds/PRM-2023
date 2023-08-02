@@ -1,0 +1,14 @@
+#TOPIC-CARD-HEADER{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+#TOPIC-CARD-HEADER .card-header-text{
+    display: flex;
+    align-items: baseline;
+    flex-direction: base;
+    gap: 0.5rem;
+}
+
