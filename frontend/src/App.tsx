@@ -1,5 +1,6 @@
 import TopicCard from "./components/TopicCard"
 import {Divider} from "@mui/material";
+import TopicCardSkeleton from "./components/TopicCardSkeleton";
 function App() {
 
   return (
@@ -12,6 +13,8 @@ function App() {
       <Divider/>
       <TopicCard/>
       <Divider/>
+      <TopicCardSkeleton/>
+
     </div>
   )
 }
