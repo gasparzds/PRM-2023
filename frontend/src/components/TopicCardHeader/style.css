@@ -1,14 +1,13 @@
-#TOPIC-CARD-HEADER{
+#topic-card-header {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    align-items: center;
+    align-items: baseline;
 }
 
-#TOPIC-CARD-HEADER .card-header-text{
+#topic-card-header .card-header-text {
     display: flex;
     align-items: baseline;
-    flex-direction: base;
+    flex-direction: row;
     gap: 0.5rem;
 }
-

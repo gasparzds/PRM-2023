@@ -1,24 +1,23 @@
 import { Avatar, Typography } from "@mui/material";
-import './style.css'
+import "./style.css"
 
-function TopicCardHeader(){
-    return(
-        <div id= "TOPIC-CARD-HEADER">
-            <Avatar alt="FULANO DE TAL"/>
+function TopicCardHeader() {
+    return (
+        <div id="topic-card-header">
+            <Avatar alt="Fulano de Tal"></Avatar>
 
             <div className="card-header-text">
-            <Typography variant="h6">
-                FULANO DE TAL
-            </Typography>
-            <Typography variant="caption">
-            Criado a 3 horas
-            </Typography>
+
+                <Typography variant="h6">
+                    <b>Fulano de Tal</b>
+                </Typography>
+                <Typography variant="caption">
+                    Criado há 8 horas
+                </Typography>
+
             </div>
-
-
-
-
         </div>
     )
 }
+
 export default TopicCardHeader;

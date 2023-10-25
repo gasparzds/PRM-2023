@@ -1,18 +1,19 @@
 import TopicCardBody from "../TopicCardBody";
 import TopicCardHeader from "../TopicCardHeader";
-import TopicCardAction from "../TopicCardActions";
+import TopicCardActions from "../TopicCardActions";
 
-type TopicCardProps ={
+type TopicCardProps = {
     topic: any
 }
 
-function TopicCard({topic}:TopicCardProps){
+function TopicCard({topic}: TopicCardProps) {
     return(
         <div id="topic-card">
-            <TopicCardHeader/>
-            <TopicCardBody/>
-            <TopicCardAction/>
+            <TopicCardHeader />
+            <TopicCardBody />
+            <TopicCardActions/>
         </div>
-    )
+    ) 
 }
+
 export default TopicCard;
