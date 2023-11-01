@@ -1,7 +1,9 @@
 import { ICredential, IUser,  } from "../@types";
-import {ReactNode, createContext,useState, } from "react";
-import { sigIn } from "../services";
+import {ReactNode, createContext,useEffect,useState, } from "react";
+import { sigIn, signUp } from "../services";
 import jwtDecode from "jwt-decode";
+import { AxiosError } from "axios";
+import { PermPhoneMsgOutlined } from "@mui/icons-material";
 
 
 type AuthContextProps = {
@@ -9,7 +11,7 @@ type AuthContextProps = {
     token: string | undefined;
     login: (Credential: ICredential) => Promise <void>;
     logout: () => void;
-    register: (user: IUser) => void;
+    register: (newUser: IUser) => Promise<Record<string, any>>;
 }
 
 export const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
@@ -62,12 +64,25 @@ export function AuthContextProvider(props: AuthContextProviderProps){
                 })
 
             })
-
     }
 
-    function logout(){}
-    function register(){}
+    async function register(newUser: IUser): Promise<Record<string,any>>{ 
+        try {
+            const result = await signUp(newUser);
+            return new Promise((resolve, reject) => {
+                resolve(result.data)
+            })
+        } catch (e) {
+            const error = e as AxiosError;
+            return new Promise((resolve, reject) => {
+                reject(error.response?.data)
 
+            })
+        }
+    }
+
+
+    function logout(){}
     return (
         <AuthContext.Provider value={{user, token, login, logout, register}}>
             {props.children}
@@ -75,6 +90,5 @@ export function AuthContextProvider(props: AuthContextProviderProps){
     )
 }
 
-function useEffect(arg0: () => void, arg1: never[]) {
-    throw new Error("Function not implemented.");
-}
+
+

@@ -44,10 +44,10 @@ function SignInPage() {
     }
 
     return (
-        <Box id="sign-in-page">
+        <Box id="sign-in-page" className="sign-page">
             <form onSubmit={handleSignIn}>
                 <Card>
-                    <CardContent>
+                    <CardContent className="sign-content">
                         <Typography variant="h5">
                             Faça o Login
                         </Typography>
@@ -59,14 +59,14 @@ function SignInPage() {
                             required
                             fullWidth
                             value={ credential.username }
-                            onChange={(event: { target: HTMLInputElement; }) => setCredential({...credential, username: (event.target as HTMLInputElement).value})} />
+                            onChange={event => setCredential({...credential, username: (event.target as HTMLInputElement).value})} />
 
                         <TextField label="Senha"
                             required
                             fullWidth
                             type="password"
                             value={ credential.password }
-                            onChange={(event: { target: HTMLInputElement; }) => setCredential({...credential, password: (event.target as HTMLInputElement).value})} />
+                            onChange={event => setCredential({...credential, password: (event.target as HTMLInputElement).value})} />
 
                         <LoadingButton type="submit"
                             variant="contained"

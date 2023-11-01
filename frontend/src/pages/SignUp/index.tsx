@@ -35,9 +35,19 @@ function SignUpPage() {
         event.preventDefault();
 
         setLoading(true);
+        setMessageError('');
+        setMessageSucess('');
 
         try {
             await register(userForm);
+            setUserForm({
+                    fullname: '',
+                    username: '',
+                    password: '',
+                    description: '',
+            })
+            setMessageSucess('Usuario criado com sucesso');
+
         } catch (e) {
             const error = e as Error;
             setMessageError(String(error.message));
@@ -48,9 +58,9 @@ function SignUpPage() {
 
     return (
         <Box id="sign-up-page">
-            <form onSubmit={handleSignUp}>
+            <form onSubmit={handleSignUp} className="sign-page">
                 <Card>
-                    <CardContent>
+                    <CardContent  className="sign-content">
                         <Typography variant="h5">
                             Crie uma Conta 
                         </Typography>
@@ -62,21 +72,21 @@ function SignUpPage() {
                             required
                             fullWidth
                             value={ userForm.fullname }
-                            onChange={(event: { target: HTMLInputElement; }) => setUserForm({...userForm, fullname: (event.target as HTMLInputElement).value})} />
+                            onChange={event => setUserForm({...userForm, fullname: (event.target as HTMLInputElement).value})} />
 
                         
                         <TextField label="Usuário"
                             required
                             fullWidth
                             value={ userForm.username }
-                            onChange={(event: { target: HTMLInputElement; }) => setUserForm({...userForm, username: (event.target as HTMLInputElement).value})} />
+                            onChange={event => setUserForm({...userForm, username: (event.target as HTMLInputElement).value})} />
 
                         <TextField label="Senha"
                             required
                             fullWidth
                             type="password"
                             value={ userForm.password }
-                            onChange={(event: { target: HTMLInputElement; }) => setUserForm({...userForm, password: (event.target as HTMLInputElement).value})} />
+                            onChange={event => setUserForm({...userForm, password: (event.target as HTMLInputElement).value})} />
 
                         <LoadingButton type="submit"
                             variant="contained"
@@ -90,6 +100,7 @@ function SignUpPage() {
                             <Typography component="h5">OU</Typography>
                             <Box className="traco"></Box>
                         </Box>
+
                         <Typography variant="h5">
                             Faça o Login
                         </Typography>
@@ -102,7 +113,6 @@ function SignUpPage() {
                             onClick={() => navigate('/signin') }>
                             Acessar
                         </Button>
-
                     </CardContent>
                 </Card>
             </form>

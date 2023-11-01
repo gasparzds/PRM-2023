@@ -14,12 +14,13 @@ function App() {
       {user ? (
         <Routes>
           <Route path="/" element ={<TopicPage/>}/>
+          <Route path="/:username" element ={<TopicPage/>}/>
         </Routes>
       ): (
-        <Route>
+        <Routes>
           <Route path="*" element={ <SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-        </Route>
+        </Routes>
       )}
 
     </div>
