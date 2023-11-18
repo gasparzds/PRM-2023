@@ -3,10 +3,16 @@ export interface ICredential {
     password: string;
 }
 
-export interface IUser{
+export interface IUser {
     id?: number;
     fullname: string;
     username: string;
     password?: string;
     description?: string;
+}
+export interface ITopic {
+    id?: number;
+    content: string;
+    owner?: IUser;
+    createdAt?: Date;
 }
